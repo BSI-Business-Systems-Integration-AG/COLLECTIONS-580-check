@@ -33,7 +33,7 @@ be shut down by the attacker.
 A list of potentially affected applications/web containers is provided below:
 
 * [WebSphere](http://www-01.ibm.com/support/docview.wss?uid=swg21970575)
-* [WebLogic](https://blogs.oracle.com/security/entry/security_alert_cve_2015_4852)
+* [WebLogic](http://www.oracle.com/technetwork/topics/security/alert-cve-2015-4852-2763333.html)
 * [JBoss](https://access.redhat.com/solutions/2045023)
 * [Jenkins](https://jenkins-ci.org/content/mitigating-unauthenticated-remote-code-execution-0-day-jenkins-cli)
 
