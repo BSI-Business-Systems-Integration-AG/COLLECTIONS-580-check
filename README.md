@@ -1,11 +1,10 @@
 # COLLECTIONS-580-check
 
-Simple web application to test vulnerability of web container for apache commons collection issue COLLECTIONS-580.
-
 With bug [COLLECTIONS-580](https://issues.apache.org/jira/browse/COLLECTIONS-580) a security related issue was 
 reported that introduces a major vulnerability for affected servers and allows arbitrary remote code execution.
+Additional information is provided by this helpful [post on InfoQ](http://www.infoq.com/news/2015/11/commons-exploit).
 
-The simple test servlet tool in this repository may be used to check if your java web container is affected by 
+The simple test servlet tool in this repository may be used to check if your Java container is affected by 
 this issue or not. Running the servlet in your container will check for the existence and accessibility of class 
 `org.apache.commons.collections.functors.InvokerTransformer`.
 
@@ -29,29 +28,34 @@ allows the attacker for example to read/modify/delete files and to use this to a
 Using `System.exit` the vulnerability may be used for denial of service (DOS) attacks. The web container can simply
 be shut down by the attacker.
 
-### Affected Applications
+### Affected Containers
 
 A list of potentially affected applications/web containers is provided below:
 
-* WebSphere (management port 8880)
-* WebLogic (port 7001, redirect port)
-* JBoss (JMXInvokerServlet)
-* Jenkins (CLI ports)
-* Applications using RMI
+* [WebSphere](http://www-01.ibm.com/support/docview.wss?uid=swg21970575)
+* [WebLogic](https://blogs.oracle.com/security/entry/security_alert_cve_2015_4852)
+* [JBoss](https://access.redhat.com/solutions/2045023)
+* [Jenkins](https://jenkins-ci.org/content/mitigating-unauthenticated-remote-code-execution-0-day-jenkins-cli)
+
+Please follow the above links providing recommendations/information for each product.
 
 ### Are Eclipse Scout Applications affected?
 
 Scout applications are potentially affected if an attacker is in possession of the login credentials of the Scout application and one of the following two conditions is true:
 
-1. Your application is running in an affected web container
-2. Your application is using Eclipse Scout version 5.1 (or older) or directly includes the affected ACC
+Scout applications starting with Scout version 5.1 are not affected (when standard settings are used).
+
+Scout application prior to Scout version 5.1 are at risk if the affected ACC is available on the classpath. Potential scenarios include.
+
+1. Your container provides an affected ACC
+2. Your application includes an affected ACC
 
 To check for the first possibility you may use the Test Servlet Tool according to <a href="#tool">these instructions</a>.
 
 To check if your application is affected you may either include the servlet provided in this repository in your application 
 or you need to verify the complete classpath of your deployed application.
 
-<h2 id="tool">How to use the Test Servlet Tool</h2>
+<h2 id="tool">How to check your Container using the Test Servlet Tool</h2>
 
 1. Build the WAR file
 2. Deploy the WAR file to your web container
