@@ -5,8 +5,8 @@ Simple web application to test vulnerability of web container for apache commons
 With bug [COLLECTIONS-580](https://issues.apache.org/jira/browse/COLLECTIONS-580) a security related issue was 
 reported that introduces a major vulnerability for affected servers and allows arbitrary remote code execution.
 
-The simple servlet in this repository may be used to check if your java web container is affected by this issue or not.
-Running the servlet in your container will check for the existence and accessibility of class 
+The simple test servlet tool in this repository may be used to check if your java web container is affected by 
+this issue or not. Running the servlet in your container will check for the existence and accessibility of class 
 `org.apache.commons.collections.functors.InvokerTransformer`.
 
 ## Background
@@ -41,15 +41,17 @@ A list of potentially affected applications/web containers is provided below:
 
 ### Are Eclipse Scout Applications affected?
 
-Scout applications are potentially affected in any of the following situations:
-1. The Scougt application directly uses an affected ACC version
-2. The Application is using Eclipse Scout up to version 5.1
+Scout applications are potentially affected if an attacker is in possession of the login credentials of the Scout application and one of the following two conditions is true:
 
-### How to check if your Applications/Servers are at Risk
+1. Your application is running in an affected web container
+2. Your application is using Eclipse Scout version 5.1 (or older) or directly includes the affected ACC
 
-bla
+To check for the first possibility you may use the Test Servlet Tool according to <a href="#tool">these instructions</a>.
 
-## How to use this tool
+To check if your application is affected you may either include the servlet provided in this repository in your application 
+or you need to verify the complete classpath of your deployed application.
+
+<h2 id="tool">How to use the Test Servlet Tool</h2>
 
 1. Build the WAR file
 2. Deploy the WAR file to your web container
@@ -68,17 +70,21 @@ Follow your standard procedures to deploy the WAR file.
 
 The outcome of this test is reported as shown below:
 
-Case 1: No InvokerTransformer is found
+**Case 1: No InvokerTransformer is found**
 
-![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/container_no_collection_save.png "Your container is save.")
+![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/raw/master/container_no_collection_save.png "Your container is save.")
 
-Case 2: A non-affected InvokerTransformer is found
+Your container is save, no action regarding the container is necessary. Make sure that the individual applications deployed to the container are safe too.
 
-![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/container_save_collection.png "Your container is save.")
+**Case 2: A non-affected InvokerTransformer is found**
 
-Case 3: A non-affected InvokerTransformer is found
+![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/raw/master/container_save_collection.png "Your container is save.")
 
-![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/container_affected_collection.png "Your container is unsafe.")
+Your container is save, no action regarding the container is necessary. Make sure that the individual applications deployed to the container are safe too.
+
+**Case 3: A non-affected InvokerTransformer is found**
+
+![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/raw/master/container_affected_collection.png "Your container is unsafe.")
 
 **Warning**: In this case your container is affected by the security vulnerability. 
 
@@ -88,4 +94,5 @@ file from the class path of the web container. Alternatively replace the affecte
 
 Once your web container is patched, repeat the test to verify that your change has been successful.
 
+Once your container is save, make sure that the individual applications deployed to the container are safe too.
 
