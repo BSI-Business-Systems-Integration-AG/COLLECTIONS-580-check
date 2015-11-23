@@ -70,15 +70,15 @@ The outcome of this test is reported as shown below:
 
 Case 1: No InvokerTransformer is found
 
-![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/ "Your container is save.")
+![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/container_no_collection_save.png "Your container is save.")
 
 Case 2: A non-affected InvokerTransformer is found
 
-![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/ "Your container is save.")
+![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/container_save_collection.png "Your container is save.")
 
 Case 3: A non-affected InvokerTransformer is found
 
-![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/ "Your container is unsafe.")
+![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/container_affected_collection.png "Your container is unsafe.")
 
 **Warning**: In this case your container is affected by the security vulnerability. 
 
