@@ -84,7 +84,7 @@ Your container is save, no action regarding the container is necessary. Make sur
 
 Your container is save, no action regarding the container is necessary. Make sure that the individual applications deployed to the container are safe too.
 
-**Case 3: A non-affected InvokerTransformer is found**
+**Case 3: An affected InvokerTransformer is found**
 
 ![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/raw/master/container_affected_collection.png "Your container is unsafe.")
 
