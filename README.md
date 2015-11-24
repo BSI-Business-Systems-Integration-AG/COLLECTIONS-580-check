@@ -41,11 +41,9 @@ Please follow the above links providing recommendations/information for each pro
 
 ### Are Eclipse Scout Applications affected?
 
-Scout applications are potentially affected if an attacker is in possession of the login credentials of the Scout application and one of the following two conditions is true:
+Scout applications starting with version 5.1 (Scout Neon release) are not affected when standard settings are used.
 
-Scout applications starting with Scout version 5.1 are not affected (when standard settings are used).
-
-Scout application prior to Scout version 5.1 are at risk if the affected ACC is available on the classpath. Potential scenarios include.
+Scout applications prior to version 5.1 (Scout Mars release and older) are potentially affected if an attacker is in possession of the login credentials of the Scout application and an affected ACC is available on the classpath. Potential scenarios include.
 
 1. Your container provides an affected ACC
 2. Your application includes an affected ACC
@@ -86,7 +84,7 @@ Your container is save, no action regarding the container is necessary. Make sur
 
 Your container is save, no action regarding the container is necessary. Make sure that the individual applications deployed to the container are safe too.
 
-**Case 3: A non-affected InvokerTransformer is found**
+**Case 3: An affected InvokerTransformer is found**
 
 ![alt text](https://github.com/BSI-Business-Systems-Integration-AG/COLLECTIONS-580-check/raw/master/container_affected_collection.png "Your container is unsafe.")
 
